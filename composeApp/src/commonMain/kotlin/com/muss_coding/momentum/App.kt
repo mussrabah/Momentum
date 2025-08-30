@@ -1,38 +1,28 @@
 package com.muss_coding.momentum
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import org.jetbrains.compose.resources.painterResource
+import com.muss_coding.core.common.navigation.Routes
+import com.muss_coding.core.presentation.ui.theme.MomentumTheme
+import com.muss_coding.momentum.root.Root
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import momentum.composeapp.generated.resources.Res
-import momentum.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
-        ) {
-            Text(
-                "Hello, Kotlin Multiplatform",
-                color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.Bold
+    MomentumTheme {
+        //val windowSizeClass = calculateWindowSizeClass()
+        Scaffold {
+            Root(
+                modifier = Modifier.padding(it),
+                windowSizeClass = null,
+                startDestination = Routes.Welcome
             )
         }
     }

@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.androidLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -8,6 +9,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -17,7 +19,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -28,16 +30,16 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     jvm()
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            
+
             // compose
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -48,18 +50,16 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
+            // kotlin serialization
+            implementation(libs.kotlinx.serialization)
 
-            
+            implementation(libs.navigation.compose)
+
             api(project(":core:presentation"))
             api(project(":core:data"))
             api(project(":core:domain"))
             api(project(":core:common"))
-//            api(project(":feature:auth"))
-//            api(project(":feature:projects"))
-//            api(project(":feature:analytics"))
-//            api(project(":feature:notes"))
-//            api(project(":feature:pomodoro"))
-//            api(project(":feature:tasks"))
+
             api(project(":feature:analytics:data"))
             api(project(":feature:analytics:domain"))
             api(project(":feature:analytics:presentation"))
@@ -84,10 +84,12 @@ kotlin {
             api(project(":feature:projects:domain"))
             api(project(":feature:projects:presentation"))
 
-            
+
             api(project(":feature:tasks:data"))
             api(project(":feature:tasks:domain"))
             api(project(":feature:tasks:presentation"))
+
+            api(project(":feature:onboarding:presentation"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -97,7 +99,7 @@ kotlin {
             implementation(libs.kotlinx.coroutinesSwing)
         }
 
-        iosMain.dependencies { 
+        iosMain.dependencies {
 
         }
     }
