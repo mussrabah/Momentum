@@ -1,7 +1,8 @@
-import com.android.build.api.dsl.androidLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import com.codingfeline.buildkonfig.compiler.FieldSpec
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -10,10 +11,29 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.buildkonfig)
 }
-group = "io.github.jan.supabase"
-version = "1.0-SNAPSHOT"
-val pluginVersion = "3.2.2"
+buildkonfig {
+    packageName = "com.muss_coding.config"
+
+    defaultConfigs {
+        val supabaseKey: String = gradleLocalProperties(
+            rootDir,
+            providers
+        ).getProperty("SUPABASE_KEY")
+        require(supabaseKey.isNotEmpty()) { "Please set SUPABASE_KEY in local.properties" }
+
+        buildConfigField(FieldSpec.Type.STRING, "SUPABASE_KEY", supabaseKey)
+
+        val supabaseUrl: String = gradleLocalProperties(
+            rootDir,
+            providers
+        ).getProperty("SUPABASE_URL")
+        require(supabaseUrl.isNotEmpty()) { "Please set API_KEY in local.properties" }
+
+        buildConfigField(FieldSpec.Type.STRING, "SUPABASE_URL", supabaseUrl)
+    }
+}
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)

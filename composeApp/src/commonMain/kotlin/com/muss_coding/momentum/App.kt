@@ -30,9 +30,8 @@ fun App() {
                     }.onFailure {
                         println("Logged in failed")
                     }
-            }
+//                authRepository.signOut()
 
-            coroutineScope.launch {
                 productRepository
                     .getProducts().onSuccess { products ->
                         println("Products fetched successfully: $products")
@@ -40,6 +39,7 @@ fun App() {
                         println("Products fetched failed")
                     }
             }
+
             Root(
                 modifier = Modifier.padding(it),
                 windowSizeClass = null,

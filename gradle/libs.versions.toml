@@ -25,6 +25,8 @@ dateTimeVersion = "0.6.2"
 ktor = "3.2.3"
 kotlinxSerialization = "1.9.0"
 supabase = "3.2.2"
+buildkonfig = "0.15.1"
+
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -87,3 +89,4 @@ jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 androidLint = { id = "com.android.lint", version.ref = "agp" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
