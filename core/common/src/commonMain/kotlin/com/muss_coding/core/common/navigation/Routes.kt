@@ -6,10 +6,20 @@ sealed interface Routes {
 
     // Onboarding routes
     @Serializable
+    object OnboardingGraph : Routes
+
+    @Serializable
     object Welcome : Routes
 
     @Serializable
     object Introduction: Routes
+
+    @Serializable
+    object UnleashDeepWork: Routes
+
+    // Auth routes
+    @Serializable
+    object AuthGraph : Routes
 
     @Serializable
     object Login : Routes
@@ -17,11 +27,18 @@ sealed interface Routes {
     @Serializable
     object Register: Routes
 
+    // Main routes
+
+
+    @Serializable
+    object MainGraph : Routes
+
     @Serializable
     object Analytics : Routes
 
     @Serializable
     object Notes : Routes
+
     @Serializable
     object Pomodoro : Routes
 

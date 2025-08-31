@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Momentum</string>
+
+
+    <string name="find_your_flow_state">Find Your Flow State.</string>
+    <string name="momentum_desc">Momentum organizes your work, so you can focus on what truly matters.</string>
+    <string name="lets_go">Let's Go</string>
+    <string name="momentum_logo">Momentum Logo</string>
+    <string name="organize_your_world">Organize Your World.</string>
+    <string name="second_desc">Group your ambitions into Projects and break them down into clear, actionable Tasks.</string>
+    <string name="next">Next</string>
+</resources>

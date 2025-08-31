@@ -1,26 +1,43 @@
 package com.muss_coding.momentum.navigation
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight.Companion.Bold
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+import com.muss_coding.core.common.navigation.Routes
+import com.muss_coding.feature.onboarding.presentation.introduction.IntroductionScreen
+import com.muss_coding.feature.onboarding.presentation.unleash_deep_work_screen.UnleashDeepWorkScreen
+import com.muss_coding.feature.onboarding.presentation.welcome.WelcomeScreen
 
-@Composable
-fun OnboardingNavigation(
+fun NavGraphBuilder.onboardingNavigation(
     windowSizeClass: String?,
+    navController: NavHostController,
 ) {
-            Column(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                Text(
-                    text = "Hello, Compose MultiPlatform,",
-                    fontWeight = Bold,
-                    fontSize = 32.sp,
-                    style = MaterialTheme.typography.titleLarge
-                )
-            }
+    navigation<Routes.OnboardingGraph>(
+        startDestination = Routes.Welcome,
+    ) {
+        composable<Routes.Welcome> {
+            WelcomeScreen(
+                onNextClick = {
+                    navController.navigate(Routes.Introduction)
+                }
+            )
+        }
+
+        composable<Routes.Introduction> {
+            IntroductionScreen(
+                onNextClick = {
+                    navController.navigate(Routes.UnleashDeepWork)
+                }
+            )
+        }
+
+        composable<Routes.UnleashDeepWork> {
+            UnleashDeepWorkScreen(
+                onNextClick = {
+                    navController.navigate(Routes.Introduction)
+                }
+            )
+        }
+    }
 }

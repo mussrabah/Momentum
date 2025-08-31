@@ -1,14 +1,9 @@
 package com.muss_coding.momentum
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.muss_coding.core.common.navigation.Routes
 import com.muss_coding.core.presentation.ui.theme.MomentumTheme
 import com.muss_coding.momentum.root.Root
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -22,7 +17,8 @@ fun App() {
             Root(
                 modifier = Modifier.padding(it),
                 windowSizeClass = null,
-                startDestination = Routes.Welcome
+                isLoggedInPreviously = false,
+                shouldShowOnboarding = true
             )
         }
     }

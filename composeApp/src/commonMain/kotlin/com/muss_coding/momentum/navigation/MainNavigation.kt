@@ -6,18 +6,30 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.muss_coding.core.common.navigation.Routes
 
-fun NavGraphBuilder.authNavigation(
+fun NavGraphBuilder.mainNavigation(
     windowSizeClass: String?,
     navController: NavHostController,
 ) {
-    navigation<Routes.AuthGraph>(
+    navigation<Routes.MainGraph>(
         startDestination = Routes.Login,
     ) {
-        composable<Routes.Login> {
+        composable<Routes.Projects> {
 
         }
 
-        composable<Routes.Register> {
+        composable<Routes.Tasks> {
+
+        }
+
+        composable<Routes.Notes> {
+
+        }
+
+        composable<Routes.Pomodoro> {
+
+        }
+
+        composable<Routes.Analytics> {
 
         }
     }

@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.muss_coding.core.presentation.resource_sharing.ResourceHelper
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 
 @Composable
@@ -68,12 +69,12 @@ fun WelcomeScreen(
 
 
     Column(
-        modifier = modifier.fillMaxSize().padding(16.dp),
+        modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Find Your Flow State.",
+            text = stringResource(ResourceHelper.string.find_your_flow_state),
             style = MaterialTheme.typography.displayLarge.copy(
                 brush = Brush.horizontalGradient(
                     colors = listOf(
@@ -83,16 +84,16 @@ fun WelcomeScreen(
                 )
             ),
             color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.graphicsLayer {
+            modifier = Modifier.padding(16.dp).graphicsLayer {
                 alpha = headerProgress
             }
         )
 
         Text(
-            text = "Momentum organizes your work, so you can focus on what truly matters.",
+            text = stringResource(ResourceHelper.string.momentum_desc),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.fillMaxWidth(.6f).graphicsLayer {
+            modifier = Modifier.fillMaxWidth(.85f).padding(16.dp).graphicsLayer {
                 alpha = headerProgress
             }.align(Alignment.End),
             textAlign = TextAlign.End
@@ -103,7 +104,7 @@ fun WelcomeScreen(
             Image(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(400.dp)
+                    .height(300.dp)
                     .clip(CircleShape)
                     .aspectRatio(
                         ratio = 0.3f,
@@ -120,7 +121,7 @@ fun WelcomeScreen(
                         scaleY = scale
                     },
                 painter = painterResource(ResourceHelper.drawable.paper_focus),
-                contentDescription = "Momentum Logo",
+                contentDescription = stringResource(ResourceHelper.string.momentum_logo),
                 colorFilter = ColorFilter
                     .tint(
                         MaterialTheme.colorScheme.primary,
@@ -133,7 +134,7 @@ fun WelcomeScreen(
             Image(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(400.dp)
+                    .height(300.dp)
                     .clip(CircleShape)
                     .graphicsLayer {
                         val scale = 0.1f + progress2/100
@@ -143,7 +144,7 @@ fun WelcomeScreen(
                     }
                     .shadow(elevation = 10.dp),
                 imageVector = vectorResource(ResourceHelper.drawable.flow),
-                contentDescription = "Momentum Logo",
+                contentDescription = stringResource(ResourceHelper.string.momentum_logo),
                 contentScale = ContentScale.Crop,
                 colorFilter = ColorFilter
                     .tint(
@@ -154,7 +155,7 @@ fun WelcomeScreen(
         }
 
         OutlinedButton(
-            modifier = Modifier.graphicsLayer {
+            modifier = Modifier.padding(end = 16.dp).graphicsLayer {
                 alpha = headerProgress
             }
                 .align(Alignment.End),
@@ -163,7 +164,7 @@ fun WelcomeScreen(
             }
         ) {
             Text(
-                text = "Let's Go",
+                text = stringResource(ResourceHelper.string.lets_go),
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
