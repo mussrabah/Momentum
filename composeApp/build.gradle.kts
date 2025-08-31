@@ -11,7 +11,9 @@ plugins {
     alias(libs.plugins.composeHotReload)
     alias(libs.plugins.kotlinSerialization)
 }
-
+group = "io.github.jan.supabase"
+version = "1.0-SNAPSHOT"
+val pluginVersion = "3.2.2"
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -37,6 +39,12 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            // koin
+            implementation(libs.bundles.koin.android.bundle)
+
+            //ktor
+            implementation(libs.ktor.client.android)
         }
         commonMain.dependencies {
 
@@ -50,10 +58,27 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
+            // Supabase libraries
+            implementation(libs.bundles.supabase)
+
+            //koin
+            api(libs.koin.core)
+            implementation(libs.bundles.koin.compose.bundle)
+
             // kotlin serialization
             implementation(libs.kotlinx.serialization)
 
             implementation(libs.navigation.compose)
+
+            // ktor
+            implementation(libs.ktor.client.core)
+
+            implementation(libs.ktor.client.content.negotiation)
+
+            implementation(libs.ktor.serialization.kotlinx.json)
+
+            // kotlin datetime
+            implementation(libs.kotlinx.datetime)
 
             api(project(":core:presentation"))
             api(project(":core:data"))
@@ -97,10 +122,11 @@ kotlin {
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
+            implementation(libs.ktor.client.java)
         }
 
         iosMain.dependencies {
-
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
@@ -147,3 +173,4 @@ compose.desktop {
         }
     }
 }
+//configureLibraryAndroidTarget("io.github.jan.supabase.common", 26, JavaVersion.VERSION_11)

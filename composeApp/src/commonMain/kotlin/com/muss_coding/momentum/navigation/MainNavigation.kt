@@ -11,7 +11,7 @@ fun NavGraphBuilder.mainNavigation(
     navController: NavHostController,
 ) {
     navigation<Routes.MainGraph>(
-        startDestination = Routes.Login,
+        startDestination = Routes.Projects,
     ) {
         composable<Routes.Projects> {
 
