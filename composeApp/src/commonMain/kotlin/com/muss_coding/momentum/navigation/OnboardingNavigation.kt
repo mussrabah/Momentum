@@ -15,7 +15,7 @@ fun NavGraphBuilder.onboardingNavigation(
     navController: NavHostController,
 ) {
     navigation<Routes.OnboardingGraph>(
-        startDestination = Routes.UnleashDeepWork,
+        startDestination = Routes.Welcome,
     ) {
         composable<Routes.Welcome> {
             WelcomeScreen(
