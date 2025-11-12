@@ -17,6 +17,9 @@ sealed interface Routes {
     @Serializable
     object UnleashDeepWork: Routes
 
+    @Serializable
+    object YourWorkEverywhere: Routes
+
     // Auth routes
     @Serializable
     object AuthGraph : Routes

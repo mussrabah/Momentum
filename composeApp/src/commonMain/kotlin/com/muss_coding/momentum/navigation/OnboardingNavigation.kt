@@ -8,13 +8,14 @@ import com.muss_coding.core.common.navigation.Routes
 import com.muss_coding.feature.onboarding.presentation.introduction.IntroductionScreen
 import com.muss_coding.feature.onboarding.presentation.unleash_deep_work_screen.UnleashDeepWorkScreen
 import com.muss_coding.feature.onboarding.presentation.welcome.WelcomeScreen
+import com.muss_coding.feature.onboarding.presentation.your_work_everywhere.YourWorkEverywhereScreen
 
 fun NavGraphBuilder.onboardingNavigation(
     windowSizeClass: String?,
     navController: NavHostController,
 ) {
     navigation<Routes.OnboardingGraph>(
-        startDestination = Routes.Welcome,
+        startDestination = Routes.UnleashDeepWork,
     ) {
         composable<Routes.Welcome> {
             WelcomeScreen(
@@ -35,8 +36,15 @@ fun NavGraphBuilder.onboardingNavigation(
         composable<Routes.UnleashDeepWork> {
             UnleashDeepWorkScreen(
                 onNextClick = {
-                    navController.navigate(Routes.Introduction)
+                    navController.navigate(Routes.YourWorkEverywhere)
                 }
+            )
+        }
+
+        composable<Routes.YourWorkEverywhere> {
+            YourWorkEverywhereScreen(
+                onLoginClick = {},
+                onCreateAccountClick = {}
             )
         }
     }

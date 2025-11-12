@@ -9,4 +9,10 @@
     <string name="organize_your_world">Organize Your World.</string>
     <string name="second_desc">Group your ambitions into Projects and break them down into clear, actionable Tasks.</string>
     <string name="next">Next</string>
+    <string name="master_your_focus">Master Your Focus.</string>
+    <string name="focus_timer_desc">Use the built-in Focus Timer to work in distraction-free sessions and conquer your goals.</string>
+    <string name="stay_in_sync">Stay in Sync, Effortlessly.</string>
+    <string name="your_projects_synced">Your projects, tasks, and notes are always up-to-date across all your devices.</string>
+    <string name="create_account">Create Account</string>
+    <string name="i_already_have_an_account">I already have an account</string>
 </resources>
