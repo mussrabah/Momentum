@@ -78,9 +78,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
-            // Supabase libraries
-            implementation(libs.bundles.supabase)
-
             //koin
             api(libs.koin.core)
             implementation(libs.bundles.koin.compose.bundle)
